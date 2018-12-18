@@ -1,0 +1,38 @@
+<div class="parts container">
+  <mat-list>
+    <mat-list-item *ngFor="let item of items">{{ item }}</mat-list-item>
+  </mat-list>
+  <mat-divider class="number" [vertical]="true" [inset]="true">
+  </mat-divider>
+  <mat-list class="max-width">
+    <mat-list-item class="max-width"
+                   *ngFor="let line of service1.value; let i = index"
+                   (dragover)="ldragoverE($event)"
+                   (dragenter)="ldragenter(i)"
+                   (drop)="dropE($event, i)"
+                   (dragleave)="ldragleaveE($event, i)"
+                   [@fadeLine]='dlineState[i]'>
+      <mat-chip *ngIf="line.length !== 0 && !service2.value && !onChips"
+                (dragenter)="dragenterE3()"
+                (dragleave)="dragleaveE3()">
+        <div *ngFor="let chip of line; let j = index"
+             draggable="true"
+             (dragstart)="dragstartE($event, chip)"
+             (dragend)="dragendE(i, j)">{{ chip }}&nbsp;
+        </div>
+      </mat-chip>
+      <div *ngIf="onChips"></div>
+      <div *ngIf="service2.value" (dragleave)="cdragleaveE($event)" (dragenter)="dragenterE4(i)">
+        <mat-chip *ngFor="let chip of line; let j = index" 
+                  draggable="true"
+                  [@a]='service1.value2[i][j]'
+                  (@a.done)="done1(j)"
+                  (dragstart)="dragstartE($event, chip)"
+                  (dragenter)="cdragenterE($event, i, j)"
+                  (dragend)="dragendE(i, j)">{{ chip }}
+          <mat-icon matChipRemove (click)="searchAndDestroy(i, j)">cancel</mat-icon>
+        </mat-chip>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
