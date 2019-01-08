@@ -4,23 +4,6 @@
       <mat-chip *ngFor="let item of items" draggable="true" (dragstart)="dragstartE($event, item)">{{ item }}</mat-chip>
     </mat-chip-list>
   </div>
-  <br>
   <mat-divider [inset]="true"></mat-divider>
   <br>
-  <div [@zidx]='ss.getState(ochips)' class="max-width max-height rela bgwhite">
-    <mat-chip-list class="max-width max-height flewap">
-      <mat-chip *ngFor="let item of madeItems; let i of index" draggable="true" (click)="selectedElement(i)" (dragstart)="dragstartE($event, item)">{{ item }}</mat-chip>
-    </mat-chip-list>
-  </div>
-  <br>
-  <div class="bottoms max-width">
-    <mat-divider [inset]="true"></mat-divider>
-    <div class="container column-container">
-      <mat-form-field class="bgwhite" [@zidx]='ss.getState(df)'>
-        <input matInput placeholder="element name" [(ngModel)]="newElementName">
-      </mat-form-field>
-      <button mat-raised-button class="max-width color1" (click)="createElement()" [@zidx]='ss.getState(cbt)'>作成</button>
-      <button mat-raised-button class="max-width color2" (click)="deleteElement()" [@zidx]='ss.getState(dbt)'>削除</button>
-    </div>
-  </div>
 </div>

@@ -11,7 +11,7 @@ interface Res {
 })
 export class RunService {
 
-  private _resSubject: Subject<Res> = new Subject();
+  private _resSubject: Subject<string> = new Subject();
   private _progress: Subject<boolean> = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) { }
@@ -29,12 +29,14 @@ export class RunService {
   run(code): Subscription {
     this._progress.next(true);
     return this.http.post<Res>(this.url, code, this.options).subscribe(res => {
-      res.answer.forEach(str => this._resSubject.next);
+      const aaa: Res = {answer: ['hellow']};
+      console.log(res.answer);
+      res.answer.forEach(str => this._resSubject.next(str));
       this._progress.next(false);
     });
   }
 
-  get result(): Observable<Res> {
+  get result(): Observable<string> {
     return this._resSubject.asObservable();
   }
 

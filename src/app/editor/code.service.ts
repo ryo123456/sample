@@ -34,12 +34,12 @@ export class CodeService {
     this._indexWidthSubject.next(digit * 10);
   }
 
-  public toCode(): any {
+  public toCode(chips): any {
+    
     return {
-      code: [
-        ['def printStack():\n'],
-        ['    for str in ["abc", "def", "ghi"]:\n'],
-        ['        print(str)']
+      python: [
+        ['print("Hellow World")'],
+        ['print("こんにちは世界")']
       ]
     };
   }

@@ -16,7 +16,7 @@ const OUTLINE: String = 'outline';
 })
 
 export class EditorComponent implements OnInit {
-
+  string="はろー"
   items: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ];
   isDropped = false;
   private dlineState = [INLINE, INLINE, INLINE, INLINE, INLINE, INLINE, INLINE, INLINE, INLINE, INLINE, INLINE];
@@ -32,6 +32,7 @@ export class EditorComponent implements OnInit {
   constructor(private service1: ChipsService, private service2: TagEditService) { }
 
   ngOnInit() { }
+
 
   private dragstartE(event, item) {
     event.dataTransfer.setData('text/plain', item);

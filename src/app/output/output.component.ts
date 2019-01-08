@@ -18,9 +18,7 @@ export class OutputComponent implements OnInit, OnDestroy {
   constructor(private runService: RunService) { }
 
   ngOnInit() {
-    this._sub = this.runService.result.subscribe(res => {
-      res.answer.forEach(str => this.outputs.push);
-    });
+    this._sub = this.runService.result.subscribe(str => this.outputs.push(str));
   }
 
   ngOnDestroy() {
@@ -29,7 +27,6 @@ export class OutputComponent implements OnInit, OnDestroy {
 
   get progress(): Observable<boolean> {
     return this._progress;
-  }
 }
-
+}
 

@@ -12,15 +12,15 @@
                    (drop)="dropE($event, i)"
                    (dragleave)="ldragleaveE($event, i)"
                    [@fadeLine]='dlineState[i]'>
-      <mat-chip *ngIf="line.length !== 0 && !service2.value && !onChips"
+      <div *ngIf="line.length !== 0 && !service2.value && !onChips"
                 (dragenter)="dragenterE3()"
                 (dragleave)="dragleaveE3()">
-        <div *ngFor="let chip of line; let j = index"
+        <mat-chip *ngFor="let chip of line; let j = index"
              draggable="true"
              (dragstart)="dragstartE($event, chip)"
              (dragend)="dragendE(i, j)">{{ chip }}&nbsp;
-        </div>
-      </mat-chip>
+        </mat-chip>
+      </div>
       <div *ngIf="onChips"></div>
       <div *ngIf="service2.value" (dragleave)="cdragleaveE($event)" (dragenter)="dragenterE4(i)">
         <mat-chip *ngFor="let chip of line; let j = index" 
@@ -30,7 +30,7 @@
                   (dragstart)="dragstartE($event, chip)"
                   (dragenter)="cdragenterE($event, i, j)"
                   (dragend)="dragendE(i, j)">{{ chip }}
-          <mat-icon matChipRemove (click)="searchAndDestroy(i, j)">cancel</mat-icon>
+          <mat-icon matChipRemove (click)="searchAndDestroy(i, j)" >cancel</mat-icon>
         </mat-chip>
       </div>
     </mat-list-item>
